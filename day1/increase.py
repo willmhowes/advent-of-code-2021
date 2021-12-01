@@ -7,7 +7,7 @@ from puzzleinput import ls
 
 i,ct = 1,0
 while i < len(ls):
-    if ls[i] - ls[i-1] > 0: ct+=1
+    if ls[i] > ls[i-1]: ct+=1
     i+=1
 
 print(ct)
