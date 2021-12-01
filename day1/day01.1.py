@@ -3,7 +3,7 @@
 # Goal: Count the number of times a depth measurement increases
 #       from the previous measurement.
 
-from puzzleinput import ls
+from puzzleinput01 import ls
 
 i,ct = 1,0
 while i < len(ls):

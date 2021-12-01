@@ -4,7 +4,7 @@
 #       Count the number of times the sum of measurements in
 #       this sliding window increases from the previous sum
 
-from puzzleinput import ls
+from puzzleinput01 import ls
 
 i,ct = 2,0
 while i < len(ls)-1:
