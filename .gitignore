@@ -139,6 +139,3 @@ cython_debug/
 
 # Mac
 .DS_Store
-
-# Project Specific
-puzzleinput*.*
