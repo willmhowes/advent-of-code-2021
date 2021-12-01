@@ -14,6 +14,8 @@ fun ctWindowIncreaseHelper nil = 0
         else 1 + ctWindowIncreaseHelper ls;
 
 (* ctWindowIncrease : int list -> int *)
+(* The program is abstracted into a helper function in order to
+   efficiently detemine if the initial input is long enough *)
 fun ctWindowIncrease nil = 0
   | ctWindowIncrease (l::ls) =
     if ls = nil orelse tl ls = nil
