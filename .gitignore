@@ -141,5 +141,4 @@ cython_debug/
 .DS_Store
 
 # Project Specific
-puzzleinput.*
-
+puzzleinput*.*
