@@ -7,16 +7,16 @@
 
 def giveInput():
     with open('puzzleinput02.txt', 'r') as file:
-        return [x[0:-1] for x in file.readlines()]
+        return [x.split() for x in file.readlines()]
 
 def calcMultiple(ls):
     h,d,a = 0,0,0
     for c in ls:
-        if c[0] == 'd': a+=int(c[-1])
-        elif c[0] == 'u': a-=int(c[-1])
-        elif c[0] == 'f':
-            h+=int(c[-1])
-            d+=int(c[-1])*a
+        if c[0][0] == 'd': a+=int(c[1])
+        elif c[0][0] == 'u': a-=int(c[1])
+        elif c[0][0] == 'f':
+            h+=int(c[1])
+            d+=int(c[1])*a
     return h*d
 
 if __name__ == "__main__":
