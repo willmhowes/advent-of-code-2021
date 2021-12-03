@@ -10,12 +10,12 @@ def giveInput():
         return file.read().split()
 
 def mostCommon(x):
-    if x >= 0: return 1
-    else:      return 0
+    if x >= 0: return '1'
+    else:      return '0'
 
 def leastCommon(x):
-    if x < 0: return 1
-    else:     return 0
+    if x < 0: return '1'
+    else:     return '0'
 
 def calcFreq(ls, com):
     binLen = len(ls[0])
@@ -28,7 +28,7 @@ def calcFreq(ls, com):
 
 def reduce(ls, i, freq, com):
     if i < len(freq) and len(ls) > 1:
-        nls = [b for b in ls if int(b[i]) == freq[i]]
+        nls = [b for b in ls if b[i] == freq[i]]
         newFreq = calcFreq(nls, com)
         return reduce(nls, i+1, newFreq, com)
     else: return ls
