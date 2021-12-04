@@ -60,3 +60,10 @@ def hasBingo(board):
                 return True
 
     return False
+
+def calcFinalScore(n, board):
+    sum = 0
+    for row in board:
+        for col in row:
+            if col != 'x': sum+=int(col)
+    return sum*int(n)
