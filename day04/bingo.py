@@ -2,7 +2,13 @@
 # Author: Will Howes
 # Bingo module
 
-def giveInput(loc='puzzleinput04.txt'):
+import sys
+
+def giveInput():
+    # optional command line argument for txt file
+    if len(sys.argv) == 2: loc = sys.argv[1]
+    else:                  loc = 'puzzleinput04.txt'
+
     with open(loc, 'r') as file:
         l1 = file.readline().rstrip().split(',')
         file.readline() # remove extra line
