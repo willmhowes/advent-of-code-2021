@@ -4,23 +4,20 @@
 #       out which board will win first. What will your final
 #       score be if you choose that board?
 
-from bingo import giveInput,markBoard,hasBingo
+from bingo import *
 
-def bingoOperator(nums, boards):
+def findWinner(nums, boards):
     for n in nums:
         for board in boards:
             markBoard(board, n)
             if hasBingo(board):
-                return board, n
+                return n, board
 
-def calcFinalScore(nums, boards):
-    board, n = bingoOperator(nums, boards)
-    sum = 0
-    for row in board:
-        for col in row:
-            if col != 'x': sum+=int(col)
-    return sum*int(n)
+def main():
+    nums, boards = giveInput()
+    n, board = findWinner(nums, boards)
+    final = calcFinalScore(n,board)
+    print(final)
 
 if __name__ == "__main__":
-    nums, boards = giveInput()
-    print(calcFinalScore(nums,boards))
+    main()

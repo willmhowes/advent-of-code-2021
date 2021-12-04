@@ -3,13 +3,13 @@
 # Goal: Figure out which board will win last. Once it wins,
 #       what would its final score be?
 
-from bingo import giveInput,markBoard,hasBingo
+from bingo import *
 
 def finishGame(nums, board):
     for n in nums:
         markBoard(board, n)
         if hasBingo(board):
-            return board, n
+            return n, board
 
 def findLastWinner(nums, boards):
     winners = 0
@@ -25,14 +25,11 @@ def findLastWinner(nums, boards):
                 if board[0][0] != 'b':
                     return finishGame(nums[i+1:], board)
 
-def calcFinalScore(nums, boards):
-    board, n = findLastWinner(nums, boards)
-    sum = 0
-    for row in board:
-        for col in row:
-            if col != 'x': sum+=int(col)
-    return sum*int(n)
+def main():
+    nums, boards = giveInput()
+    n, board = findLastWinner(nums, boards)
+    final = calcFinalScore(n,board)
+    print(final)
 
 if __name__ == "__main__":
-    nums, boards = giveInput()
-    print(calcFinalScore(nums,boards))
+    main()
