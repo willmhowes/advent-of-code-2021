@@ -20,23 +20,23 @@ def giveInput():
             if left0 == right0:
                 if left1 > right1:
                     left1, right1 = right1, left1
-                ls.append([left0, left1, right0, right1, 0])
+                ls.append([left0, left1, right0, right1, 0]) # horizontal
             elif left1 == right1:
                 if left0 > right0:
                     left0, right0 = right0, left0
-                ls.append([left0, left1, right0, right1, 1])
+                ls.append([left0, left1, right0, right1, 1]) # vertical
             l = file.readline().rstrip()
         return ls
 
 def fillGrid(ls):
     grid = [[0 for x in range(1000)] for x in range(1000)]
     for l in ls:
-        if l[4]:
+        if l[4]: # vertical
             i = l[0]
             while i < l[2]+1:
                 grid[l[1]][i] += 1
                 i+=1
-        else:
+        else: # horizontal
             i = l[1]
             while i < l[3]+1:
                 grid[i][l[0]] += 1
