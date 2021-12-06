@@ -5,8 +5,6 @@
 
 import sys
 
-MAX_LENGTH = 1000
-
 def giveInput():
     # optional command line argument for txt file
     if len(sys.argv) == 2: loc = sys.argv[1]
@@ -19,13 +17,14 @@ def giveInput():
             left, right = l.split(' -> ')
             left0, left1 = [int(x) for x in left.split(',')]
             right0, right1 = [int(x) for x in right.split(',')]
-            orientation = 2 # assume diagonal
-            if left0 == right0:
-                orientation = 0 # horizontal
-            elif left1 == right1:
-                orientation = 1 # vertical
+
+            orientation = 2                       # assume diagonal
+            if   left0 == right0: orientation = 0 # horizontal
+            elif left1 == right1: orientation = 1 # vertical
+
             ls.append([left0, left1, right0, right1, orientation])
             l = file.readline().rstrip()
+
         return ls
 
 def countOverlaps(ls):
@@ -40,28 +39,19 @@ def countOverlaps(ls):
         else:              dx = -1
 
         c, r = left0, left1 # index for tracking position of line
-
-        # diagonal line
-        if d == 2:
+        # diagonal or vertical line
+        if d:
             while c != right0+dy:
                 if (r,c) in markedOnce: markedMult.add((r,c))
                 else:                   markedOnce.add((r,c))
-                c+=dy # increment column index
-                r+=dx # increment row index
-
-        # vertical line
-        elif d == 1:
-            while c != right0+dy:
-                if (r,c) in markedOnce: markedMult.add((r,c))
-                else:                   markedOnce.add((r,c))
-                c+=dy # increment column index
-
+                c+=dy          # increment column index
+                if d==2: r+=dx # increment row index if diagonal
         # horizontal line
         else:
             while r != right1+dx:
                 if (r,c) in markedOnce: markedMult.add((r,c))
                 else:                   markedOnce.add((r,c))
-                r+=dx # increment row index
+                r+=dx          # increment row index
 
     return len(markedMult)
 
