@@ -32,9 +32,11 @@ def markBoard(board, n):
         while j < len(board[0]):
             if board[i][j] == n:
                 board[i][j] = 'x'
+                return True
             j+=1
         i+=1
         j=0
+    return False
 
 def hasBingo(board):
     # check horizontal
